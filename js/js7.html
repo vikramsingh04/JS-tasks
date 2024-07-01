@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7 Javascript</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script"
+        rel="stylesheet">
+    <style>
+        h1{
+            text-align: center;
+            font-size: larger;
+            font-weight: bold;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #chuk {
+            margin: 200px 0px 0px 0px ;
+            width: 250px;
+            position:relative;
+            z-index: 3;
+        }
+        
+        .control{
+            display: flex;
+            justify-content: center;
+        }
+        body{
+            background-color: rgb(247, 247, 247);
+        }
+        button{
+            margin: 100px;
+            padding: 15px 30px;
+            font-size: 30px;
+            background-color: rgb(21, 39, 60);
+            color: white;
+            border: 3px solid rgb(203, 238, 134);
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Dancing Script', cursive;  
+        }
+        
+        @keyframes trains {
+            from {
+                left: 0px;
+            }
+            to {
+                left: 100%  
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Task-7</h1>
+    <div class="train">
+        <img id="chuk" src="./Train.jpg" alt="">
+    </div>
+    <div class="control">
+        <button id="startbtn">Start</button>
+        <button id="stopbtn">Stop</button>
+    </div>
+    <script>
+        startbtn.addEventListener("click", function(){
+            chuk.style.animation = "trains 12s linear infinite"
+        });
+        stopbtn.addEventListener("click", function(){
+            chuk.style.animation = ""
+        });
+    </script>
+</body>
+
+</html>

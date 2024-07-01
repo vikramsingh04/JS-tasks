@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task 5 Javascript</title>
+  <style>
+    h1 {
+            text-align: center;
+            font-size: larger;
+            font-weight: bold;
+        }
+    .error {
+      color: red;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: auto;
+      position: absolute;
+      margin-left: 10px;
+    }
+
+    .center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      width: 300px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-group label {
+      width: 100px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      margin-right: 10px;
+    }
+
+    .error {
+      position: absolute;
+      left: 320px;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+    <h1>Task-5</h1>
+  <div class="center">
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <span id="nameError" class="error"></span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <span id="emailError" class="error"></span>
+      </div>
+      <div class="form-group">
+        <label for="website">Website:</label>
+        <input type="text" id="website" name="website">
+        <span id="websiteError" class="error"></span>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
+        <span id="messageError" class="error"></span>
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var name = document.getElementById('name');
+      var email = document.getElementById('email');
+      var website = document.getElementById('website');
+      var message = document.getElementById('message');
+
+      // Validate Name
+      if(name.value === '') {
+        document.getElementById('nameError').textContent = 'This field is required';
+      } else {
+        document.getElementById('nameError').textContent = '';
+      }
+
+      // Validate Email
+      var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if(email.value === '') {
+        document.getElementById('emailError').textContent = 'This field is required';
+      } else if(!email.value.match(emailPattern)) {
+        document.getElementById('emailError').textContent = 'A valid email address is required';
+      } else {
+        document.getElementById('emailError').textContent = '';
+      }
+
+      // Validate Website
+      var urlPattern = /^(http|https):\/\/[^ "]+$/;
+      if(website.value === '') {
+        document.getElementById('websiteError').textContent = 'This field is required';
+      } else if(!website.value.match(urlPattern)) {
+        document.getElementById('websiteError').textContent = 'A valid url is required';
+      } else {
+        document.getElementById('websiteError').textContent = '';
+      }
+
+      // Validate Message
+      if(message.value === '') {
+        document.getElementById('messageError').textContent = 'This field is required';
+      } else {
+        document.getElementById('messageError').textContent = '';
+      }
+    });
+  </script>
+</body>
+</html>
